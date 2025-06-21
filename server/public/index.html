@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stream Elite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">StreamingInfo</h1>
+    <nav class="space-x-4">
+      <a href="#inicio" class="hover:text-blue-600">Inicio</a>
+      <a href="#comparador" class="hover:text-blue-600">Comparador</a>
+      <a href="#estrenos" class="hover:text-blue-600">Estrenos</a>
+      <a href="#recomendaciones" class="hover:text-blue-600">Recomendaciones</a>
+      <a href="#blog" class="hover:text-blue-600">Blog</a>
+    </nav>
+  </header>
+
+  <!-- Hero / Inicio -->
+  <section id="inicio" class="p-10 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-center">
+    <h2 class="text-4xl font-bold mb-4">Encuentra el mejor servicio de streaming</h2>
+    <p class="text-lg">Compara precios, descubre estrenos y obtén las mejores recomendaciones</p>
+  </section>
+
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-3xl font-bold text-center text-indigo-600 mb-8">
+      🎬 Próximos Estrenos
+    </h1>
+
+    <ul id="estrenos" class="space-y-4 bg-white p-6 rounded-lg shadow">
+      <li class="text-gray-600 italic">Cargando estrenos...</li>
+    </ul>
+  </div>
+
+  <div class="text-center my-6 flex justify-center gap-4">
+  <button id="btnAnterior" disabled
+    class="px-4 py-2 bg-gray-400 text-white rounded cursor-not-allowed">
+    ⬅️ Anterior
+  </button>
+  <button id="btnSiguiente"
+    class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+    ➡️ Siguiente
+  </button>
+</div>
+
+</div>
+
+
+  <!-- Comparador de Precios -->
+  <!-- Comparador de Precios -->
+<section id="comparador" class="p-8">
+  <h3 class="text-2xl font-bold mb-4">Comparador de precios</h3>
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border border-gray-300">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="p-2">Servicio</th>
+          <th class="p-2">Precio mensual</th>
+          <th class="p-2">Resolución</th>
+          <th class="p-2">Pantallas</th>
+          <th class="p-2">Comprar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-t">
+          <td class="p-2">Netflix</td>
+          <td class="p-2">$15.99</td>
+          <td class="p-2">4K</td>
+          <td class="p-2">4</td>
+          <td class="p-2">
+            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Netflix"
+               target="_blank"
+               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
+              Comprar
+            </a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">Disney+</td>
+          <td class="p-2">$7.99</td>
+          <td class="p-2">4K</td>
+          <td class="p-2">4</td>
+          <td class="p-2">
+            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Disney%2B"
+               target="_blank"
+               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
+              Comprar
+            </a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">HBO Max</td>
+          <td class="p-2">$9.99</td>
+          <td class="p-2">Full HD</td>
+          <td class="p-2">3</td>
+          <td class="p-2">
+            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20HBO%20Max"
+               target="_blank"
+               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
+              Comprar
+            </a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">Amazon Prime Video</td>
+          <td class="p-2">$8.99</td>
+          <td class="p-2">4K</td>
+          <td class="p-2">3</td>
+          <td class="p-2">
+            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Amazon%20Prime%20Video"
+               target="_blank"
+               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
+              Comprar
+            </a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">Star+</td>
+          <td class="p-2">$6.99</td>
+          <td class="p-2">Full HD</td>
+          <td class="p-2">2</td>
+          <td class="p-2">
+            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Star%2B"
+               target="_blank"
+               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
+              Comprar
+            </a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">Paramount+</td>
+          <td class="p-2">$5.99</td>
+          <td class="p-2">Full HD</td>
+          <td class="p-2">2</td>
+          <td class="p-2">
+            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Paramount%2B"
+               target="_blank"
+               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
+              Comprar
+            </a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">Apple TV+</td>
+          <td class="p-2">$6.99</td>
+          <td class="p-2">4K</td>
+          <td class="p-2">6</td>
+          <td class="p-2">
+            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Apple%20TV%2B"
+               target="_blank"
+               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
+              Comprar
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+  <!-- Estrenos -->
+  <section id="estrenos" class="p-8 bg-white">
+    <h3 class="text-2xl font-bold mb-4">Próximos estrenos</h3>
+    <ul class="list-disc ml-6">
+      <li><strong>Inside Out 2</strong> - Disney+ - 14 de junio</li>
+      <li><strong>House of the Dragon T2</strong> - HBO Max - 16 de junio</li>
+      <li><strong>Bridgerton T3 (Parte 2)</strong> - Netflix - 20 de junio</li>
+    </ul>
+  </section>
+
+  <!-- Recomendaciones -->
+  <section id="recomendaciones" class="p-8">
+    <h3 class="text-2xl font-bold mb-4">Recomendaciones destacadas</h3>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded shadow">
+        <h4 class="font-semibold">Netflix</h4>
+        <p>"Dark" - Ciencia ficción y misterio imperdible.</p>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <h4 class="font-semibold">Disney+</h4>
+        <p>"The Mandalorian" - Aventura espacial del universo Star Wars.</p>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <h4 class="font-semibold">HBO Max</h4>
+        <p>"Succession" - Drama y poder entre familias empresariales.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+<section id="blog" class="p-8 bg-white">
+  <h3 class="text-2xl font-bold mb-4">Últimos artículos del blog</h3>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><a href="/blogA" class="text-blue-600 hover:underline">¿Cuál es la mejor plataforma para ver anime en 2025?</a></li>
+    <li><a href="/blogB" class="text-blue-600 hover:underline">Cómo compartir cuentas de streaming de forma segura.</a></li>
+    <li><a href="/blogC" class="text-blue-600 hover:underline">Disney+ vs Netflix: ¿Cuál tiene más contenido familiar?</a></li>
+  </ul>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-4 mt-8">
+    <p>&copy; 2025 StreamingInfo - Comparador independiente de servicios OTT</p>
+  </footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
