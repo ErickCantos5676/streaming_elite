@@ -9,7 +9,7 @@
 <body class="bg-gray-100 text-gray-800 font-sans">
   <!-- Header -->
   <header class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">StreamingInfo</h1>
+    <h1 class="text-2xl font-bold">Streaming Elite</h1>
     <nav class="space-x-4">
       <a href="#inicio" class="hover:text-blue-600">Inicio</a>
       <a href="#comparador" class="hover:text-blue-600">Comparador</a>
@@ -20,9 +20,82 @@
   </header>
 
   <!-- Hero / Inicio -->
-  <section id="inicio" class="p-10 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-center">
-    <h2 class="text-4xl font-bold mb-4">Encuentra el mejor servicio de streaming</h2>
-    <p class="text-lg">Compara precios, descubre estrenos y obtén las mejores recomendaciones</p>
+  <section class="relative w-full overflow-hidden" id="banner-slider">
+  <div class="flex transition-transform duration-700 ease-in-out" id="slides">
+    <!-- Banner 1 -->
+    <div class="min-w-full">
+      <img src="img/banners/las mejores.jpg" alt="Banner 1" class="w-full h-auto object-cover">
+    </div>
+    <!-- Banner 2 -->
+    <div class="min-w-full">
+      <img src="img/banners/plex.jpg" alt="Banner 2" class="w-full h-auto object-cover">
+    </div>
+    <!-- Banner 3 -->
+    <div class="min-w-full">
+      <img src="img/banners/nuevos productos.jpg" alt="Banner 4" class="w-full h-auto object-cover">
+    </div>
+    <!-- Banner 4 -->
+    <div class="min-w-full">
+      <img src="img/banners/tream volt.jpg" alt="Banner 5" class="w-full h-auto object-cover">
+    </div>
+    <!-- Banner 5 -->
+    <div class="min-w-full">
+      <img src="img/banners/renovaciones.jpg" alt="Banner 6" class="w-full h-auto object-cover">
+    </div>                
+    <!-- Banner 6 -->
+    <div class="min-w-full">
+      <img src="img/banners/atencion garantia.jpg" alt="Banner 7" class="w-full h-auto object-cover">
+    </div>
+    <div class="min-w-full">
+      <img src="img/banners/indicaciones.jpg" alt="Banner 8" class="w-full h-auto object-cover">
+    </div>    
+  </div>
+
+  <!-- Flechas -->
+  <button id="prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full hover:bg-opacity-75">
+    ‹
+  </button>
+  <button id="next" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full hover:bg-opacity-75">
+    ›
+  </button>
+</section>
+
+<script>
+  const slides = document.getElementById('slides');
+  const totalSlides = slides.children.length;
+  let index = 0;
+
+  function showSlide(i) {
+    index = (i + totalSlides) % totalSlides;
+    slides.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  document.getElementById('next').addEventListener('click', () => showSlide(index + 1));
+  document.getElementById('prev').addEventListener('click', () => showSlide(index - 1));
+
+  // Autoplay
+  setInterval(() => showSlide(index + 1), 5000);
+</script>
+
+
+  </section>
+
+<script>
+  const slider = document.getElementById('anuncio-slides');
+  const total = slider.children.length;
+  let current = 0;
+
+  function goToSlide(i) {
+    current = (i + total) % total;
+    slider.style.transform = `translateX(-${current * 100}%)`;
+  }
+
+  document.getElementById('anuncio-next').addEventListener('click', () => goToSlide(current + 1));
+  document.getElementById('anuncio-prev').addEventListener('click', () => goToSlide(current - 1));
+
+  setInterval(() => goToSlide(current + 1), 7000);
+</script>
+
   </section>
 
   <div class="max-w-3xl mx-auto">
@@ -49,14 +122,24 @@
 </div>
 
 
-  <!-- Comparador de Precios -->
-  <!-- Comparador de Precios -->
+<!-- Comparador de Precios -->
 <section id="comparador" class="p-8">
   <h3 class="text-2xl font-bold mb-4">Comparador de precios</h3>
+
+  <!-- Buscador -->
+  <input
+    type="text"
+    id="buscador"
+    placeholder="Buscar servicio..."
+    class="mb-4 p-2 border border-gray-300 rounded w-full"
+    onkeyup="filtrarServicios()"
+  />
+
   <div class="overflow-x-auto">
-    <table class="w-full text-left border border-gray-300">
+    <table class="w-full text-left border border-gray-300" id="tabla-servicios">
       <thead class="bg-gray-200">
         <tr>
+          <th class="p-2">Logo</th>
           <th class="p-2">Servicio</th>
           <th class="p-2">Precio mensual</th>
           <th class="p-2">Resolución</th>
@@ -65,95 +148,185 @@
         </tr>
       </thead>
       <tbody>
+        <!-- Orden alfabético -->
         <tr class="border-t">
-          <td class="p-2">Netflix</td>
-          <td class="p-2">$15.99</td>
-          <td class="p-2">4K</td>
-          <td class="p-2">4</td>
           <td class="p-2">
-            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Netflix"
-               target="_blank"
-               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
-              Comprar
-            </a>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" alt="Amazon Prime" class="w-10 h-10 object-contain" />
           </td>
-        </tr>
-        <tr class="border-t">
-          <td class="p-2">Disney+</td>
-          <td class="p-2">$7.99</td>
-          <td class="p-2">4K</td>
-          <td class="p-2">4</td>
-          <td class="p-2">
-            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Disney%2B"
-               target="_blank"
-               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
-              Comprar
-            </a>
-          </td>
-        </tr>
-        <tr class="border-t">
-          <td class="p-2">HBO Max</td>
-          <td class="p-2">$9.99</td>
-          <td class="p-2">Full HD</td>
-          <td class="p-2">3</td>
-          <td class="p-2">
-            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20HBO%20Max"
-               target="_blank"
-               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
-              Comprar
-            </a>
-          </td>
-        </tr>
-        <tr class="border-t">
           <td class="p-2">Amazon Prime Video</td>
           <td class="p-2">$8.99</td>
           <td class="p-2">4K</td>
           <td class="p-2">3</td>
           <td class="p-2">
-            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Amazon%20Prime%20Video"
-               target="_blank"
-               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
-              Comprar
-            </a>
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Amazon%20Prime%20Video" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
           </td>
         </tr>
         <tr class="border-t">
-          <td class="p-2">Star+</td>
-          <td class="p-2">$6.99</td>
-          <td class="p-2">Full HD</td>
-          <td class="p-2">2</td>
           <td class="p-2">
-            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Star%2B"
-               target="_blank"
-               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
-              Comprar
-            </a>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Apple_TV_Plus_Logo.svg" alt="Apple TV+" class="w-10 h-10 object-contain" />
           </td>
-        </tr>
-        <tr class="border-t">
-          <td class="p-2">Paramount+</td>
-          <td class="p-2">$5.99</td>
-          <td class="p-2">Full HD</td>
-          <td class="p-2">2</td>
-          <td class="p-2">
-            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Paramount%2B"
-               target="_blank"
-               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
-              Comprar
-            </a>
-          </td>
-        </tr>
-        <tr class="border-t">
           <td class="p-2">Apple TV+</td>
           <td class="p-2">$6.99</td>
           <td class="p-2">4K</td>
           <td class="p-2">6</td>
           <td class="p-2">
-            <a href="https://wa.me/34600123456?text=Hola%2C%20quiero%20comprar%20una%20cuenta%20Apple%20TV%2B"
-               target="_blank"
-               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
-              Comprar
-            </a>
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Apple%20TV+" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+            <td class="p-2">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Bookmate_logo.png" alt="Bookmate" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">Bookmate</td>
+          <td class="p-2">$3.99</td>
+          <td class="p-2">N/A</td>
+          <td class="p-2">1</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Bookmate" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">Disney+</td>
+          <td class="p-2">$7.99</td>
+          <td class="p-2">4K</td>
+          <td class="p-2">4</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Disney+" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg" alt="HBO Max" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">HBO Max</td>
+          <td class="p-2">$9.99</td>
+          <td class="p-2">Full HD</td>
+          <td class="p-2">3</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20HBO%20Max" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://cdn-icons-png.flaticon.com/512/709/709496.png" alt="Invictus Pass" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">Invictus Pass</td>
+          <td class="p-2">$2.99</td>
+          <td class="p-2">HD</td>
+          <td class="p-2">1</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Invictus%20Pass" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Kocowa_logo_01.png" alt="Amazon Prime" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">Kocowa+</td>
+          <td class="p-2">$6.99</td>
+          <td class="p-2">HD</td>
+          <td class="p-2">2</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Kocowa+" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Movistar_Plus%2B_2022_logo.svg" alt="Amazon Prime" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">Movistar Plus</td>
+          <td class="p-2">$7.49</td>
+          <td class="p-2">Full HD</td>
+          <td class="p-2">2</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Movistar%20Plus" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Original_Netflix_Logo.png" alt="Amazon Prime" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">Netflix</td>
+          <td class="p-2">$15.99</td>
+          <td class="p-2">4K</td>
+          <td class="p-2">4</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Netflix" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Paramount_Network_2024.svg" alt="Amazon Prime" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">Paramount+</td>
+          <td class="p-2">$5.99</td>
+          <td class="p-2">Full HD</td>
+          <td class="p-2">2</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Paramount+" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Plex_vector_logo.svg" alt="Amazon Prime" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">Plex</td>
+          <td class="p-2">$4.00</td>
+          <td class="p-2">4K</td>
+          <td class="p-2">Ilimitado</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Plex" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Scribd_logo_%282%29.svg" alt="Amazon Prime" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">Scribd</td>
+          <td class="p-2">$4.99</td>
+          <td class="p-2">N/A</td>
+          <td class="p-2">1</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Scribd" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Amazon Prime" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">Spotify</td>
+          <td class="p-2">$5.99</td>
+          <td class="p-2">Audio HQ</td>
+          <td class="p-2">1-6 (Familiar)</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20Spotify" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/ViX_Logo.svg" alt="Amazon Prime" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">ViX</td>
+          <td class="p-2">$3.99</td>
+          <td class="p-2">Full HD</td>
+          <td class="p-2">2</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20ViX" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/YouTube_Premium_logo.svg" alt="Amazon Prime" class="w-10 h-10 object-contain" />
+          </td>
+          <td class="p-2">YouTube Premium</td>
+          <td class="p-2">$6.49</td>
+          <td class="p-2">Full HD</td>
+          <td class="p-2">1-5</td>
+          <td class="p-2">
+            <a href="https://wa.me/34634804387?text=Hola,%20quiero%20comprar%20una%20cuenta%20YouTube%20Premium" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Comprar</a>
           </td>
         </tr>
       </tbody>
@@ -161,35 +334,93 @@
   </div>
 </section>
 
+<!-- Script buscador -->
+<script>
+  function filtrarServicios() {
+    const input = document.getElementById("buscador");
+    const filtro = input.value.toLowerCase();
+    const filas = document.querySelectorAll("#tabla-servicios tbody tr");
+
+    filas.forEach((fila) => {
+      const servicio = fila.children[0].textContent.toLowerCase();
+      fila.style.display = servicio.includes(filtro) ? "" : "none";
+    });
+  }
+</script>
+
+
 
   <!-- Estrenos -->
-  <section id="estrenos" class="p-8 bg-white">
-    <h3 class="text-2xl font-bold mb-4">Próximos estrenos</h3>
-    <ul class="list-disc ml-6">
-      <li><strong>Inside Out 2</strong> - Disney+ - 14 de junio</li>
-      <li><strong>House of the Dragon T2</strong> - HBO Max - 16 de junio</li>
-      <li><strong>Bridgerton T3 (Parte 2)</strong> - Netflix - 20 de junio</li>
-    </ul>
-  </section>
-
-  <!-- Recomendaciones -->
-  <section id="recomendaciones" class="p-8">
-    <h3 class="text-2xl font-bold mb-4">Recomendaciones destacadas</h3>
-    <div class="grid md:grid-cols-3 gap-4">
-      <div class="bg-white p-4 rounded shadow">
-        <h4 class="font-semibold">Netflix</h4>
-        <p>"Dark" - Ciencia ficción y misterio imperdible.</p>
-      </div>
-      <div class="bg-white p-4 rounded shadow">
-        <h4 class="font-semibold">Disney+</h4>
-        <p>"The Mandalorian" - Aventura espacial del universo Star Wars.</p>
-      </div>
-      <div class="bg-white p-4 rounded shadow">
-        <h4 class="font-semibold">HBO Max</h4>
-        <p>"Succession" - Drama y poder entre familias empresariales.</p>
+<section id="estrenos" class="p-8 bg-white">
+  <h3 class="text-2xl font-bold mb-6 text-center">📅 Próximos Estrenos</h3>
+  <div class="grid md:grid-cols-3 gap-6">
+    
+    <!-- Estreno 1: Inside Out 2 -->
+    <div class="bg-gray-100 rounded-lg shadow overflow-hidden">
+      <img src="img/algunasPelis/i2.jpg" alt="Inside Out 2" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h4 class="text-lg font-semibold">Inside Out 2</h4>
+        <p class="text-sm text-gray-700">Disney+ - Estreno: 14 de junio</p>
       </div>
     </div>
-  </section>
+
+    <!-- Estreno 2: House of the Dragon T2 -->
+    <div class="bg-gray-100 rounded-lg shadow overflow-hidden">
+      <img src="img/algunasPelis/cdd.jpeg">
+      <div class="p-4">
+        <h4 class="text-lg font-semibold">House of the Dragon T2</h4>
+        <p class="text-sm text-gray-700">HBO Max - Estreno: 16 de junio</p>
+      </div>
+    </div>
+
+    <!-- Estreno 3: Bridgerton T3 Parte 2 -->
+    <div class="bg-gray-100 rounded-lg shadow overflow-hidden">
+      <img src="img/algunasPelis/b2.jpg" alt="Bridgerton T3" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h4 class="text-lg font-semibold">Bridgerton T3 (Parte 2)</h4>
+        <p class="text-sm text-gray-700">Netflix - Estreno: 20 de junio</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Recomendaciones -->
+<section id="recomendaciones" class="p-8 bg-gray-100">
+  <h3 class="text-2xl font-bold mb-6 text-center">🎬 Recomendaciones destacadas</h3>
+  <div class="grid md:grid-cols-3 gap-6">
+    
+    <!-- Tarjeta 1: Netflix -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <img src="img/algunasPelis/poster-dark.jpg" alt="Dark" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h4 class="text-lg font-semibold mb-1">Netflix</h4>
+        <p class="text-sm text-gray-700">"Dark" - Ciencia ficción y misterio imperdible.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 2: Disney+ -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <img src="img/algunasPelis/62dad0e3-da6a-4261-89c0-258065b86e04.png" alt="The Mandalorian" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h4 class="text-lg font-semibold mb-1">Disney+</h4>
+        <p class="text-sm text-gray-700">"The Mandalorian" - Aventura espacial del universo Star Wars.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 3: HBO Max -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <img src="img/algunasPelis/maxresdefault.jpg" alt="Succession" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h4 class="text-lg font-semibold mb-1">HBO Max</h4>
+        <p class="text-sm text-gray-700">"Succession" - Drama y poder entre familias empresariales.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
   <!-- Blog -->
 <section id="blog" class="p-8 bg-white">
@@ -203,7 +434,7 @@
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-white text-center p-4 mt-8">
-    <p>&copy; 2025 StreamingInfo - Comparador independiente de servicios OTT</p>
+    <p>&copy; 2025 Streaming Elite - Comparador independiente de servicios</p>
   </footer>
 
 <script src="js/app.js"></script>
